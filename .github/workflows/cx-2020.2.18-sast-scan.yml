@@ -10,6 +10,7 @@ jobs:
       uses: checkmarx-ts/checkmarx-github-action@v1.0.3
       with:
         cxAction: Scan
+        cxSkipIfFail: true
         cxServer: https://0d5bc6e68afc.ngrok.io
         cxUsername: ${{ secrets.CX_USER }}
         cxPassword: ${{ secrets.CX_PASSWORD }}
@@ -20,6 +21,11 @@ jobs:
         cxGithubToken: ${{ secrets.GITHUB_TOKEN }}
         cxGithubLabels: bug,test
         cxGithubAssignees: fjsnogueira
+    - name: Upload ReportXML artifact
+      uses: actions/upload-artifact@v2.0.1
+      with:
+        name: report.xml
+        path: report.xml
     - name: Upload artifact
       uses: actions/upload-artifact@v2.0.1
       with:

@@ -1,11 +1,5 @@
-name: 2020.2.18 SAST Scan
-on:
-  push:
-    branches: 
-      - master
-  pull_request:
-    branches:
-      - master
+name: 2020.2.18 SAST 
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,19 +9,7 @@ jobs:
     - name: Checkmarx Action
       uses: checkmarx-ts/checkmarx-github-action@v1.0.3
       with:
-        cxAction: Scan
         cxServer: ${{ secrets.CX_SERVER }}
         cxUsername: ${{ secrets.CX_EMAIL }}
         cxPassword: ${{ secrets.CX_PASSWORD }}
         cxTeam: ${{ secrets.CX_TEAM }}
-        cxVersion: "2020.2.18"
-        cxLog: log.log
-        cxGithubIssues: true
-        cxGithubToken: ${{ secrets.GITHUB_TOKEN }}
-        cxGithubLabels: bug,test
-        cxGithubAssignees: fjsnogueira
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2.0.1
-      with:
-        name: log.log
-        path: log.log

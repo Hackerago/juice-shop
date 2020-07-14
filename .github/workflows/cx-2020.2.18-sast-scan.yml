@@ -11,7 +11,7 @@ jobs:
       with:
         cxAction: Scan
         cxServer: https://0d5bc6e68afc.ngrok.io
-        cxUsername: ${{ secrets.CX_EMAIL }}
+        cxUsername: ${{ secrets.CX_USER }}
         cxPassword: ${{ secrets.CX_PASSWORD }}
         cxTeam: ${{ secrets.CX_TEAM }}
         cxVersion: "2020.2.18"
